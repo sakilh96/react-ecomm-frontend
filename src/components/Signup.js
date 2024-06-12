@@ -20,10 +20,10 @@ const Signup = () => {
                 email: email,
                 password: password
             };
-            //  console.log('formData', formData);
+           
             const signup = await userService.signUp(formData)
-             if(signup.status == 200){
-                // console.log('signup',signup.data.message);
+             if(signup.status === 200){
+               
                 navigate('/products');
                 toast(signup.data.message);
              }

@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import {  useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
+const Header = (props) => {
 
-const Header = () => {
- 
+  const checkLogin = useSelector((state) => state.userReducers.userToken);
+
+  const navigate = useNavigate();
+  const logout = () => {
+    navigate('/');
+    props.logoutUser();
+    toast(`You have logged out`);
+  }
 
   return (
     <div className="header">
@@ -12,27 +22,34 @@ const Header = () => {
           Products
           
             <ul className="dropdown-content" >
-              <li className="nav-item">
-                <Link className="nav-link" to="/add-products">Add Products</Link>
+            <li className="nav-item">
+                <Link className="nav-link" to="/products">All Products</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/update-products">Update Products</Link>
+                <Link className="nav-link" to="/products/add-products">Add Products</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/products/update-products">Update Products</Link>
+              </li>
+              
             </ul>
+             
           
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/profile">Profile</Link>
         </li>
-        {/* <li className="nav-item">
-          <Link className="nav-link" to="/signup">Signup</Link>
-        </li> */}
-        {/* <li className="nav-item">
-           <Link className="nav-link" to="/">Login</Link>
-        </li> */}
-        <li className="nav-item">
-          <Link className="nav-link" to="/logout">Logout</Link>
-        </li>
+        {
+        checkLogin ?
+         <li className="nav-item">
+          <Link className="nav-link" onClick={logout} >Logout</Link>
+          
+        </li> : ''
+
+        }
+            
+         
+       
       </ul>
     </div>
   );

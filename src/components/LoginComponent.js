@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const LoginComponent = (props) => {
-    // console.log('props',props);
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -19,7 +19,7 @@ const LoginComponent = (props) => {
         }
         const login = await userService.logIn(payload);
         props.getUserLoginToken(login.data.token);
-        // console.log('login',login.data.token);
+    
         navigate('/profile');
         toast(login.data.message);
            
