@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {  useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -39,6 +39,9 @@ const Header = (props) => {
         <li className="nav-item">
           <Link className="nav-link" to="/profile">Profile</Link>
         </li>
+        {/* <li className="nav-item">
+          <Link className="nav-link" to="/">Login</Link>
+        </li> */}
         {
         checkLogin ?
          <li className="nav-item">

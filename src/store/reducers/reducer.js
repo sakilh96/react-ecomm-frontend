@@ -3,6 +3,7 @@ import { LOGGED_OUT } from "../constants";
 
 const initialState = {
     userToken : [],
+    isAuthenticated : false,
 }
 
 const userReducers = (state = initialState, action) => {
@@ -13,13 +14,15 @@ const userReducers = (state = initialState, action) => {
     
             return {
                 ...state,
-                userToken: action.data
+                userToken: action.data,
+                isAuthenticated: true
             }
 
         case LOGGED_OUT:
             return {
                 ...state,
-                userToken: null
+                userToken: null,
+                isAuthenticated: false
             }
 
             default:

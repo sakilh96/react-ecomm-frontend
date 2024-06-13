@@ -11,9 +11,6 @@ import ProductContainer from './store/containers/ProductContainer';
 import HeaderContainer from './store/containers/headerContainer';
 
 
-
-
-
 function App() {
 
  
@@ -23,14 +20,17 @@ function App() {
       <BrowserRouter>
        <HeaderContainer/>
       <Routes>
+        <Route element={<ProtectedRoute/>}>
+          <Route path='/profile' element={<ProfileContainer/>}></Route>
+          <Route path='/products'>
+              <Route index element={<ProductContainer/>}></Route>
+              <Route path='add-products' element={<h1>Add Product page</h1>}/>
+              <Route path='update-products' element={<h1>Update Product page</h1>}/>
+          </Route>
+        </Route>
+
         <Route path='/' element={<LoginContainer/>} ></Route>
         <Route path='/signup' element={<Signup/>}></Route>
-        <Route path='/profile' element={<ProtectedRoute component={ProfileContainer}/>}></Route>
-        <Route path='/products' element={<ProtectedRoute component="0" />}>
-            <Route index element={<ProductContainer/>}></Route>
-            <Route path='add-products' element={<h1>Add Product page</h1>}/>
-            <Route path='update-products' element={<h1>Update Product page</h1>}/>
-        </Route>
       </Routes>
       </BrowserRouter>
       <Footer/>

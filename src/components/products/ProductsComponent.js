@@ -1,7 +1,8 @@
 import React from 'react'
 
 
-const ProductsComponent = (props) => {
+const ProductsComponent = () => {
+
   return (
     <div>
       hello ProductsComponent

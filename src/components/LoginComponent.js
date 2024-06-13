@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const LoginComponent = (props) => {
-
+  
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
